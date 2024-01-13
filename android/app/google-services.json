@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "827338695639",
+    "firebase_url": "https://authtutorial-d3f78-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "authtutorial-d3f78",
+    "storage_bucket": "authtutorial-d3f78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827338695639:android:c5b067a5121bec28f7e192",
+        "android_client_info": {
+          "package_name": "com.example.modernlogintute"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB56Ny4_Ny7xDTXzAtl_vau3oMv9HuuG_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
