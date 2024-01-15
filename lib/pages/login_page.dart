@@ -5,7 +5,8 @@ import 'package:modernlogintute/components/my_textfield.dart';
 import 'package:modernlogintute/components/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  final Function()? onTap;
+  const LoginPage({super.key, required this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -14,7 +15,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // text editing controllers
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   // sign user in method
@@ -39,41 +39,27 @@ class _LoginPageState extends State<LoginPage> {
   } on FirebaseAuthException catch (e) {
       // pop the loading circle
       Navigator.pop(context);
-      //wrong email
-      if (e.code == 'user-not-found') {
-        wrongEmailMessage();
-        //wrong password
-      } else if (e.code == 'wrong-password') {
-        wrongPasswordMessage();
-
-      }
+     //show the error message
+      showErrorMessage(e.code);
     }
-
-  // pop the loading circle
-  Navigator.pop(context);
-}
-
-//wrong password pop up
-  void wrongEmailMessage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-      return const AlertDialog(
-      title:Text('Incorrect Email'),
-      );
-     },
-    );
   }
 
-  //wrong password pop up
-  void wrongPasswordMessage() {
+
+//error message pop up
+  void showErrorMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title:Text('Incorrect Password'),
+      return AlertDialog(
+        backgroundColor: Colors.deepPurpleAccent,
+      title: center(
+       child:Text(
+          message,
+      style: const TextStyle(color: Colors.white),
+         ),
+         ),
         );
-      },
+     },
     );
   }
 
@@ -83,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
+          child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -203,17 +190,22 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   const SizedBox(width: 4),
-                  const Text(
+                  GestureDetector(
+                    onTap:  widget.onTap,
+                   child: const Text(
                     'Register now',
                     style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.bold,
+
                     ),
+                  ),
                   ),
                 ],
               )
             ],
           ),
+        ),
         ),
       ),
     );
