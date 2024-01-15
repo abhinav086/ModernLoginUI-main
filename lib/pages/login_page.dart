@@ -52,12 +52,12 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context) {
       return AlertDialog(
         backgroundColor: Colors.deepPurpleAccent,
-      title: center(
-       child:Text(
+        title:Center(
+         child:Text(
           message,
       style: const TextStyle(color: Colors.white),
          ),
-         ),
+         ),//center
         );
      },
     );
@@ -130,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // sign in button
               MyButton(
+                text: "Sign In",
                 onTap: signUserIn,
               ),
 
@@ -166,9 +167,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               // google + apple sign in buttons
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   // google button
                   SquareTile(imagePath: 'lib/images/google.png'),
 
